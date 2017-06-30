@@ -3,15 +3,10 @@ import {render} from 'react-dom';
 import store from './redux/store';
 import {Provider} from 'react-redux';
 
-import BpComponent from './components/bp-component/BpComponent.jsx';
+import Profiles from './containers/profiles/Profiles.jsx';
 
 render(
   <Provider store={store}>
-    <BpComponent
-      buttonText={"Toggle Title"}
-      headingTitle={"Boilerplate"}
-      subHeading={"Start with something rather than nothing!"}
-      titleToggleText={"Base Dish"}
-    />
+    <Profiles />
   </Provider>, document.getElementById('app')
 );
