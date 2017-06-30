@@ -1,1 +1,41 @@
+@import '../../globals/globals';
+
 .profile {}
+
+.profile__details {
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint($medium) {
+    flex-direction: row;
+  }
+
+  & + & {
+    margin-top: 15px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.profile__details-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+
+  @include breakpoint($medium) {
+    flex-direction: row;
+    margin-bottom: 0;
+    width: 120px;
+  }
+}
+
+.profile__details-value {
+  padding-left: 10px;
+}
+
+.profile__education-entry {
+  & + & {
+    margin-top: 10px;
+  }
+}

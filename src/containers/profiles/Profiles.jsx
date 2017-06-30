@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import Page from '../page/Page.jsx';
-import Profile from '../../components/profile/Profile.jsx';
+import ProfileCard from '../../components/profile/ProfileCard.jsx';
 
 export class Profiles extends Component {
   render() {
@@ -16,7 +16,7 @@ export class Profiles extends Component {
           <h1 className="profiles__heading">ProFiles</h1>
           {
             profiles.map((profile, index) => (
-              <Profile
+              <ProfileCard
                 key={index}
                 profile={profile}
               />

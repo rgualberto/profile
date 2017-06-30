@@ -1,31 +1,32 @@
 import './profile.scss';
+import './profile-card.scss';
 import _ from 'lodash';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-export class Profile extends Component {
+export class ProfileCard extends Component {
   render() {
     const {
       profile
     } = this.props;
 
     return (
-      <div className="profile">
-        <div className="profile__image">
-          <img src={profile.photo} aria-label="profile picture"/>
+      <div className="profile-card">
+        <div className="profile-card__image">
+          <img src={profile.photo} aria-label="profile thumbnail"/>
         </div>
-        <div className="profile__details-container">
-          <h1 className="profile__name">{profile.name}</h1>
+        <div className="profile-card__details-container">
+          <h2 className="profile-card__name">{profile.name}</h2>
           {!_.isEmpty(profile.location) &&
             <div className="profile__details">
-              <span className="profile__details-label">Based out of</span>
+              <span className="profile__details-label">Based out of:</span>
               <p className="profile__details-value">{profile.location}</p>
             </div>
           }
 
           {!_.isEmpty(profile.education) &&
             <div className="profile__details">
-              <span className="profile__details-label">Education</span>
+              <span className="profile__details-label">Education:</span>
               <div className="profile__details-value">
                 {
                   profile.education.map((entry, index) => (
@@ -38,25 +39,14 @@ export class Profile extends Component {
               </div>
             </div>
           }
-
-          {!_.isEmpty(profile.currentProject) &&
-            <div className="profile__details">
-              <span className="profile__details-label">Current Project</span>
-              <p className="profile__details-value">{profile.currentProject}</p>
-            </div>
-          }
-        </div>
-
-        <div className="profile__research-entries">
-          Wikipedia entries here (Much Smart, Very Wow)
         </div>
       </div>
     );
   }
 }
 
-Profile.propTypes = {
+ProfileCard.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-export default Profile;
+export default ProfileCard;
