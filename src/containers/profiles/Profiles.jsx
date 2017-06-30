@@ -2,11 +2,20 @@ import './profiles.scss';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
+import {push} from 'react-router-redux';
 import Page from '../page/Page.jsx';
 import ProfileCard from '../../components/profile/ProfileCard.jsx';
 
 export class Profiles extends Component {
+  handleRoute(event) {
+    event.preventDefault();
+
+    const nextRoute = event.target.attributes.href.value;
+
+    this.props.push(nextRoute);
+  }
+
   render() {
     const {profiles} = this.props;
 
@@ -19,6 +28,7 @@ export class Profiles extends Component {
               <ProfileCard
                 key={index}
                 profile={profile}
+                handleRoute={this.handleRoute.bind(this)}
               />
             ))
           }
@@ -29,7 +39,8 @@ export class Profiles extends Component {
 }
 
 Profiles.propTypes = {
-  profiles: PropTypes.array.isRequired
+  profiles: PropTypes.array.isRequired,
+  push: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -38,8 +49,9 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps() {
-  return {};
+function mapDispatchToProps(dispatch) {
+  return {
+  push: bindActionCreators(push, dispatch)};
 }
 
 export default connect(

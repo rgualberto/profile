@@ -42,4 +42,22 @@
 
 .profile-card__name {
   margin-top: 0;
+
+  a {
+    color: $black;
+    text-decoration: none;
+
+    &:visited {
+      color: $black;
+    }
+
+    &:hover {
+      color: rgba($black, 0.5);
+    }
+  }
+}
+
+.profile-card__link {
+  display: block;
+  margin-top: 15px;
 }
