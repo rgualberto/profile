@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
+import Page from '../page/Page.jsx';
 import Profile from '../../components/profile/Profile.jsx';
 
 export class Profiles extends Component {
@@ -10,17 +11,19 @@ export class Profiles extends Component {
     const {profiles} = this.props;
 
     return (
-      <div className="profiles">
-        <h1 className="profiles__heading">ProFiles</h1>
-        {
-          profiles.map((profile, index) => (
-            <Profile
-              key={index}
-              profile={profile}
-            />
-          ))
-        }
-      </div>
+      <Page>
+        <div className="profiles">
+          <h1 className="profiles__heading">ProFiles</h1>
+          {
+            profiles.map((profile, index) => (
+              <Profile
+                key={index}
+                profile={profile}
+              />
+            ))
+          }
+        </div>
+      </Page>
     );
   }
 }
