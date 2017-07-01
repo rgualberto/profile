@@ -1,12 +1,10 @@
 @import './normalize.scss';
 
-body {
-  // font-family: "Montserrat", Arial, sans-serif;
-}
-
 // Colors
 $black: #000000;
 $white: #ffffff;
+$lightBlue: #63b6ff;
+$blue: #3b96e4;
 
 // Breakpoints
 $medium: 768px;
@@ -17,4 +15,23 @@ $large:  1024px;
     @media screen and (min-width: $breakpoint), print {
         @content;
     }
+}
+
+// elements
+
+body {
+  // font-family: "Montserrat", Arial, sans-serif;
+}
+
+a {
+  color: $lightBlue;
+  text-decoration: none;
+
+  &:visited {
+    color: $lightBlue;
+  }
+
+  &:hover {
+    color: $blue;
+  }
 }

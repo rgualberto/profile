@@ -5,3 +5,39 @@
   margin: auto;
   padding: 0 10px;
 }
+
+.page__header {
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba($black, 0.3);
+
+  @include breakpoint($medium) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.page__logo {
+  padding: 6px 0;
+  font-weight: bold;
+  font-size: 18px;
+
+  @include breakpoint($medium) {
+    display: inline-block;
+  }
+}
+
+.page__nav {
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  text-align: right;
+
+  @include breakpoint($medium) {
+    display: inline-block;
+  }
+}
+
+.page__nav-item {
+  display: inline-block;
+  padding: 0 0 0 12px;
+}

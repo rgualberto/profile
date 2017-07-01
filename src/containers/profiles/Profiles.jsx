@@ -22,7 +22,6 @@ export class Profiles extends Component {
     return (
       <Page>
         <div className="profiles">
-          <h1 className="profiles__heading">ProFiles</h1>
           {
             profiles.map((profile, index) => (
               <ProfileCard

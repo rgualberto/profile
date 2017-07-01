@@ -34,11 +34,24 @@ export class Page extends Component {
 
     return (
       <div className="page">
-        <div className="page__nav" style={{"background": "#f00"}}>
-          <a
-            href={loggedIn ? "/logout" : "/login"}
-            onClick={this.handleRoute.bind(this)}
-          >{loggedIn ? "logout" : "login"}</a>
+        <div className="page__header">
+          <div className="page__logo">ProFile</div>
+          <ul className="page__nav">
+            {loggedIn &&
+              <li className="page__nav-item">
+                <a
+                  href={`/profile/${currentUser.id}`}
+                  onClick={this.handleRoute.bind(this)}
+                >My Profile</a>
+              </li>
+            }
+            <li className="page__nav-item">
+              <a
+                href={loggedIn ? "/logout" : "/login"}
+                onClick={this.handleRoute.bind(this)}
+              >{loggedIn ? "logout" : "login"}</a>
+            </li>
+          </ul>
         </div>
         {this.props.children}
       </div>

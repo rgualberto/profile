@@ -1,4 +1,5 @@
-export const CREATE_PROFILE = 'profile/CREATE_PROFILE';
+import _ from 'lodash';
+export const UPDATE_PROFILE = 'profile/UPDATE_PROFILE';
 
 export const initialState = {
   profiles: [
@@ -21,7 +22,8 @@ export const initialState = {
           school: "Massachusetts Institute of Technology"
         }
       ],
-      currentProject: "Duis in nunc ultrices, viverra lorem sed, suscipit mauris. Nullam maximus, sapien non facilisis mattis, magna ex sodales ipsum, eget tristique sapien ante quis libero. Praesent pretium velit ac odio egestas fringilla. Cras nec tortor dignissim, efficitur ligula nec, imperdiet odio. Etiam in augue felis. Duis iaculis placerat vulputate. Aliquam in mauris tempor risus egestas blandit ac ut lacus."
+      currentProject: "Duis in nunc ultrices, viverra lorem sed, suscipit mauris. Nullam maximus, sapien non facilisis mattis, magna ex sodales ipsum, eget tristique sapien ante quis libero. Praesent pretium velit ac odio egestas fringilla. Cras nec tortor dignissim, efficitur ligula nec, imperdiet odio. Etiam in augue felis. Duis iaculis placerat vulputate. Aliquam in mauris tempor risus egestas blandit ac ut lacus.",
+      isEditMode: false
     },
     {
       userId: 456,
@@ -42,7 +44,8 @@ export const initialState = {
           school: "Johns Hopkins University"
         }
       ],
-      currentProject: "In mattis arcu arcu, convallis volutpat eros consequat vitae. Pellentesque ultricies vulputate magna nec facilisis. Nullam consectetur risus orci, tincidunt molestie libero tempus eu. Vivamus a mauris vel nunc gravida laoreet finibus eu erat. Vestibulum sollicitudin volutpat nisl ac rhoncus. Nulla volutpat elit nec ante molestie, lacinia egestas neque molestie. Nulla nulla purus, ornare non vehicula at, blandit vel purus. Vivamus vitae ipsum id dui porttitor malesuada aliquam quis lacus. Cras quam nisi, finibus ac tellus quis, lobortis convallis nisl. Mauris viverra imperdiet placerat. Ut in eros sit amet ligula viverra luctus. Etiam ultrices ultricies pellentesque. Fusce malesuada vehicula egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      currentProject: "In mattis arcu arcu, convallis volutpat eros consequat vitae. Pellentesque ultricies vulputate magna nec facilisis. Nullam consectetur risus orci, tincidunt molestie libero tempus eu. Vivamus a mauris vel nunc gravida laoreet finibus eu erat. Vestibulum sollicitudin volutpat nisl ac rhoncus. Nulla volutpat elit nec ante molestie, lacinia egestas neque molestie. Nulla nulla purus, ornare non vehicula at, blandit vel purus. Vivamus vitae ipsum id dui porttitor malesuada aliquam quis lacus. Cras quam nisi, finibus ac tellus quis, lobortis convallis nisl. Mauris viverra imperdiet placerat. Ut in eros sit amet ligula viverra luctus. Etiam ultrices ultricies pellentesque. Fusce malesuada vehicula egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+      isEditMode: false
     }
   ]
 };
@@ -54,15 +57,29 @@ export const profileDefaults = {
 
 export const profilesReducer = (state = initialState, action = {}) => {
     switch (action.type) {
-      case CREATE_PROFILE:
-        return {
-          ...state
+      case UPDATE_PROFILE: {
+        const updatedProfile = {
+          ..._.find(state.profiles, ['userId', action.userId]),
+          ...action.profileData
         };
+
+        return {
+          ...state,
+          profiles: [
+            ..._.reject(state.profiles, ['userId', action.userId]),
+            updatedProfile
+          ]
+        };
+      }
       default:
         return state;
     }
 };
 
-export const createProfile = () => ({ type: CREATE_PROFILE });
+export const updateProfile = (userId, profileData) => ({
+  type: UPDATE_PROFILE,
+  userId,
+  profileData
+});
 
 export default profilesReducer;
