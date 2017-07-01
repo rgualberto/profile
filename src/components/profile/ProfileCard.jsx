@@ -11,11 +11,11 @@ export class ProfileCard extends Component {
     } = this.props;
 
     return (
-      <div className="profile-card">
-        <a href={`/profile/${profile.userId}`} className="profile-card__image" onClick={this.props.handleRoute}>
+      <div className="profile-card profile">
+        <a href={`/profile/${profile.userId}`} className="profile__image" onClick={this.props.handleRoute}>
           <img src={profile.photo} aria-label="profile thumbnail"/>
         </a>
-        <div className="profile-card__details-container">
+        <div className="profile__details-container">
           <h2 className="profile-card__name">
             <a
               href={`/profile/${profile.userId}`}
@@ -53,8 +53,8 @@ export class ProfileCard extends Component {
 }
 
 ProfileCard.propTypes = {
-  profile: PropTypes.object.isRequired,
-  handleRoute: PropTypes.func.isRequired
+  handleRoute: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 export default ProfileCard;

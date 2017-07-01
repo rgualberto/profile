@@ -12,6 +12,11 @@ export const users = [
     id: 123,
     name: "doctor_doge",
     password: "verywow123"
+  },
+  {
+    id: 456,
+    name: "professor",
+    password: "iteachstuff2you"
   }
 ];
 

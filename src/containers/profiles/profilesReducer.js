@@ -47,6 +47,7 @@ export const initialState = {
   ]
 };
 
+// TODO: flesh out when creating new profile
 export const profileDefaults = {
   photo: ''
 };
