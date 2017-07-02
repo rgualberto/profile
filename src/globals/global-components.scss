@@ -1,0 +1,21 @@
+.text-box {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid $borderColor;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    @include breakpoint($medium) {
+        width: 210px;
+    }
+
+    &.error {
+      border-color: $red;
+    }
+}
+
+.error {
+  color: $red;
+}

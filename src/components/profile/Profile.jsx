@@ -167,13 +167,16 @@ export class Profile extends Component {
 
               {profile.isEditMode &&
                 <div className="profile__research-edit">
-                  Search for a wikipedia article below and select an article from the generated list below:
+                  <h2>Add Research</h2>
+
+                  <p>Search for a wikipedia article below and select an article from the generated list below:</p>
 
                   <div className="profile__search-contain">
-                    <label htmlFor="search">search:</label>
+                    <label htmlFor="search">Search:</label>
                     <input
                       type="text"
                       ref="search"
+                      className="profile__search-box text-box"
                       onChange={this.handleSearch}
                     />
 
@@ -184,31 +187,40 @@ export class Profile extends Component {
                     }
                   </div>
 
+                  <p className="profile__research-results-info">
+                    * Click on the article name to go to article page
+                  </p>
                   <div className="profile__research-results">
                     <table>
+                      <thead>
+                        <tr>
+                          <th>Select</th>
+                          <th>Article</th>
+                          <th>Snippet</th>
+                        </tr>
+                      </thead>
                       <tbody>
                         {this.state.searchResults.map((result, index) => (
                           <tr key={index}>
-                            <td>
-                              <a href={`https://en.wikipedia.org/wiki/${encodeURI(result.title)}`} target="_blank">{result.title}</a>
-                            </td>
-                            <td>
+                            <td className="profile__research-result-select">
                               <button type="button" onClick={this.addResearch.bind(this, result)}>select</button>
                             </td>
+                            <td className="profile__research-result-preview">
+                              <a href={`https://en.wikipedia.org/wiki/${encodeURI(result.title)}`} target="_blank">{result.title}</a>
+                            </td>
+                            <td
+                              className="profile__research-result-snippet"
+                              dangerouslySetInnerHTML={{__html: result.snippet}}
+                            />
                           </tr>
                         ))}
+                        {_.isEmpty(this.state.searchResults) &&
+                            <tr>
+                              <td>Search results will appear here!</td>
+                            </tr>
+                        }
                       </tbody>
                     </table>
-                    {/*
-                    <div className="profile__research-result" key={index}>
-                      <div className="profile__research-result-preview">
-
-                      </div>
-                      <div className="profile__research-result-select">
-
-                      </div>
-                    </div>
-                  */}
                   </div>
 
                   <button

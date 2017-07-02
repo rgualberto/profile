@@ -6,6 +6,10 @@ $white: #ffffff;
 $lightBlue: #63b6ff;
 $blue: #3b96e4;
 $red: #f50000;
+$green: #25c525;
+
+// Color Variables
+$borderColor: rgba($black, 0.3);
 
 // Breakpoints
 $medium: 768px;
@@ -37,6 +41,4 @@ a {
   }
 }
 
-.error {
-  color: $red;
-}
+@import './global-components';

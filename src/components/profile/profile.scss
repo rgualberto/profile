@@ -76,3 +76,40 @@
   margin-top: 36px;
   width: 100%;
 }
+
+.profile__research-edit {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid $borderColor;
+  border-radius: 3px;
+}
+
+.profile__search-box {
+  @include breakpoint($medium) {
+    margin-left: 10px;
+  }
+}
+
+.profile__research-results-info {
+  color: $green;
+  font-size: 12px;
+}
+
+.profile__research-results {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid $borderColor;
+}
+
+.profile__research-result-select {
+  padding: 6px 10px 6px 0;
+}
+
+.profile__research-result-preview {
+  min-width: 200px;
+  padding: 0 10px;
+}
+
+.profile__research-result-snippet {
+  padding: 10px 0 10px 10px;
+}
