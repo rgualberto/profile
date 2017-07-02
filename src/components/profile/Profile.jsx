@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import {push} from 'react-router-redux';
 import Page from '../../containers/page/Page.jsx';
 import {
+  hydrateProfiles,
   updateProfile
 } from '../../containers/profiles/profilesReducer';
 import {
@@ -29,6 +30,10 @@ export class Profile extends Component {
     if (_.isEmpty(this.getProfile())) {
       this.props.push('/pageNotFound');
     }
+  }
+
+  componentDidMount() {
+    this.props.hydrateProfiles();
   }
 
   getProfile() {
@@ -230,8 +235,6 @@ export class Profile extends Component {
                   >Exit Edit Mode</button>
                 </div>
               }
-
-              // store entire state so app doesnt get tanked on refresh?
             </div>
           }
         </div>
@@ -242,6 +245,7 @@ export class Profile extends Component {
 
 Profile.propTypes = {
   currentUser: PropTypes.object.isRequired,
+  hydrateProfiles: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   profiles: PropTypes.array.isRequired,
   push: PropTypes.func.isRequired,
@@ -258,6 +262,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     push: bindActionCreators(push, dispatch),
+    hydrateProfiles: bindActionCreators(hydrateProfiles, dispatch),
     updateProfile: bindActionCreators(updateProfile, dispatch)
   };
 }

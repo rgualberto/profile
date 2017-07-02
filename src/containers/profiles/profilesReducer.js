@@ -1,4 +1,5 @@
 import _ from 'lodash';
+export const HYDRATE_PROFILES = 'profile/HYDRATE_PROFILES';
 export const UPDATE_PROFILE = 'profile/UPDATE_PROFILE';
 
 export const initialState = {
@@ -63,24 +64,37 @@ export const initialState = {
 
 export const profilesReducer = (state = initialState, action = {}) => {
     switch (action.type) {
-      case UPDATE_PROFILE: {
-        const updatedProfile = {
-          ..._.find(state.profiles, ['userId', action.userId]),
-          ...action.profileData
-        };
+      case HYDRATE_PROFILES: {
+        const existingData = window.localStorage.getItem('profileData');
+        const profiles = _.isNull(existingData) ? state.profiles : JSON.parse(existingData);
 
         return {
           ...state,
-          profiles: [
-            ..._.reject(state.profiles, ['userId', action.userId]),
-            updatedProfile
-          ]
+          profiles
+        };
+      }
+      case UPDATE_PROFILE: {
+        const newProfiles = [
+          ..._.reject(state.profiles, ['userId', action.userId]),
+          {
+            ..._.find(state.profiles, ['userId', action.userId]),
+            ...action.profileData
+          }
+        ];
+
+        window.localStorage.setItem('profileData', JSON.stringify(newProfiles));
+
+        return {
+          ...state,
+          profiles: newProfiles
         };
       }
       default:
         return state;
     }
 };
+
+export const hydrateProfiles = () => ({ type: HYDRATE_PROFILES });
 
 export const updateProfile = (userId, profileData) => ({
   type: UPDATE_PROFILE,
