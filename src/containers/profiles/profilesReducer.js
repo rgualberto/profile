@@ -5,6 +5,7 @@ export const initialState = {
   profiles: [
     {
       userId: 123,
+      isEditMode: false,
       photo: "http://lorempixel.com/160/160/",
       name: "Sven Motorson",
       location: "Boston",
@@ -23,10 +24,20 @@ export const initialState = {
         }
       ],
       currentProject: "Duis in nunc ultrices, viverra lorem sed, suscipit mauris. Nullam maximus, sapien non facilisis mattis, magna ex sodales ipsum, eget tristique sapien ante quis libero. Praesent pretium velit ac odio egestas fringilla. Cras nec tortor dignissim, efficitur ligula nec, imperdiet odio. Etiam in augue felis. Duis iaculis placerat vulputate. Aliquam in mauris tempor risus egestas blandit ac ut lacus.",
-      isEditMode: false
+      wikis: [
+        {
+          title: "Engine",
+          uriParam: "engine"
+        },
+        {
+          title: "Electric motor",
+          uriParam: "Electric_motor"
+        }
+      ]
     },
     {
       userId: 456,
+      isEditMode: false,
       photo: "http://lorempixel.com/160/160/",
       name: "Alice Mendelson",
       location: "Baltimore",
@@ -45,14 +56,9 @@ export const initialState = {
         }
       ],
       currentProject: "In mattis arcu arcu, convallis volutpat eros consequat vitae. Pellentesque ultricies vulputate magna nec facilisis. Nullam consectetur risus orci, tincidunt molestie libero tempus eu. Vivamus a mauris vel nunc gravida laoreet finibus eu erat. Vestibulum sollicitudin volutpat nisl ac rhoncus. Nulla volutpat elit nec ante molestie, lacinia egestas neque molestie. Nulla nulla purus, ornare non vehicula at, blandit vel purus. Vivamus vitae ipsum id dui porttitor malesuada aliquam quis lacus. Cras quam nisi, finibus ac tellus quis, lobortis convallis nisl. Mauris viverra imperdiet placerat. Ut in eros sit amet ligula viverra luctus. Etiam ultrices ultricies pellentesque. Fusce malesuada vehicula egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-      isEditMode: false
+      wikis: []
     }
   ]
-};
-
-// TODO: flesh out when creating new profile
-export const profileDefaults = {
-  photo: ''
 };
 
 export const profilesReducer = (state = initialState, action = {}) => {

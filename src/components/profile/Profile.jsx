@@ -9,8 +9,22 @@ import Page from '../../containers/page/Page.jsx';
 import {
   updateProfile
 } from '../../containers/profiles/profilesReducer';
+import {
+  searchWikiArticles
+} from '../../utils';
 
 export class Profile extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchResults: [],
+      searchError: false
+    };
+
+    this.handleSearch = _.throttle(this.handleSearch.bind(this), 200);
+  }
+
   componentWillMount() {
     if (_.isEmpty(this.getProfile())) {
       this.props.push('/pageNotFound');
@@ -33,6 +47,47 @@ export class Profile extends Component {
     } = this.props;
 
     updateProfile(currentUser.id, {isEditMode: toggleState});
+  }
+
+  handleSearch() {
+    const searchTerm = this.refs.search.value;
+
+    if (!_.isEmpty(searchTerm)) {
+      searchWikiArticles(searchTerm)
+        .then(response => {
+          this.setState({
+            searchResults: response.data.query.search,
+            searchError: false
+          });
+        })
+        .catch(error => {
+          console.log(error); // eslint-disable-line no-console
+          this.setState({
+            searchError: true
+          });
+        });
+    } else {
+      this.setState({
+        searchResults: []
+      });
+    }
+  }
+
+  addResearch(result) {
+    const {
+      currentUser,
+      updateProfile
+    } = this.props;
+    const profile = this.getProfile();
+    const wikis = [
+      ...profile.wikis,
+      {
+        title: result.title,
+        uriParam: encodeURI(result.title)
+      }
+    ];
+
+    updateProfile(currentUser.id, {wikis});
   }
 
   render() {
@@ -61,6 +116,9 @@ export class Profile extends Component {
                 className="profile__button-link"
                 onClick={this.toggleEdit.bind(this, true)}
               >Edit Page</button>
+            }
+            {profile.isEditMode &&
+              <h2>Currently Editing Page...</h2>
             }
             <h1 className="profile__name">{profile.name}</h1>
             {!_.isEmpty(profile.location) &&
@@ -94,9 +152,76 @@ export class Profile extends Component {
             }
           </div>
 
-          <div className="profile__research-entries">
-            Wikipedia entries here (Much Smart, Very Wow)
-          </div>
+          {!_.isEmpty(profile.wikis) &&
+            <div className="profile__research-entries">
+              <h2>Research</h2>
+              {
+                profile.wikis.map(({title, uriParam}, index) => (
+                  <div className="profile__research-entry" key={index}>
+                    <h3>{title}</h3>
+                    <p>
+                      <a href={`https://en.wikipedia.org/wiki/${uriParam}`} target="_blank">Read more about {title} here</a>
+                    </p>
+                  </div>
+              ))}
+
+              {profile.isEditMode &&
+                <div className="profile__research-edit">
+                  Search for a wikipedia article below and select an article from the generated list below:
+
+                  <div className="profile__search-contain">
+                    <label htmlFor="search">search:</label>
+                    <input
+                      type="text"
+                      ref="search"
+                      onChange={this.handleSearch}
+                    />
+
+                    {this.state.searchError &&
+                      <div className="error">
+                        It looks like something went wrong! Please try something else.
+                      </div>
+                    }
+                  </div>
+
+                  <div className="profile__research-results">
+                    <table>
+                      <tbody>
+                        {this.state.searchResults.map((result, index) => (
+                          <tr key={index}>
+                            <td>
+                              <a href={`https://en.wikipedia.org/wiki/${encodeURI(result.title)}`} target="_blank">{result.title}</a>
+                            </td>
+                            <td>
+                              <button type="button" onClick={this.addResearch.bind(this, result)}>select</button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    {/*
+                    <div className="profile__research-result" key={index}>
+                      <div className="profile__research-result-preview">
+
+                      </div>
+                      <div className="profile__research-result-select">
+
+                      </div>
+                    </div>
+                  */}
+                  </div>
+
+                  <button
+                    type="button"
+                    className="profile__button-link"
+                    onClick={this.toggleEdit.bind(this, false)}
+                  >Exit Edit Mode</button>
+                </div>
+              }
+
+              // store entire state so app doesnt get tanked on refresh?
+            </div>
+          }
         </div>
       </Page>
     );

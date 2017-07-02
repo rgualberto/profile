@@ -5,6 +5,7 @@ $black: #000000;
 $white: #ffffff;
 $lightBlue: #63b6ff;
 $blue: #3b96e4;
+$red: #f50000;
 
 // Breakpoints
 $medium: 768px;
@@ -34,4 +35,8 @@ a {
   &:hover {
     color: $blue;
   }
+}
+
+.error {
+  color: $red;
 }
