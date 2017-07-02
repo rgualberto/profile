@@ -6,7 +6,6 @@ export const initialState = {
   profiles: [
     {
       userId: 123,
-      isEditMode: false,
       photo: "http://lorempixel.com/160/160/",
       name: "Sven Motorson",
       location: "Boston",
@@ -38,7 +37,6 @@ export const initialState = {
     },
     {
       userId: 456,
-      isEditMode: false,
       photo: "http://lorempixel.com/160/160/",
       name: "Alice Mendelson",
       location: "Baltimore",

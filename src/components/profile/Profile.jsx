@@ -20,7 +20,8 @@ export class Profile extends Component {
 
     this.state = {
       searchResults: [],
-      searchError: false
+      searchError: false,
+      isEditMode: false
     };
 
     this.handleSearch = _.throttle(this.handleSearch.bind(this), 200);
@@ -46,12 +47,7 @@ export class Profile extends Component {
   }
 
   toggleEdit(toggleState) {
-    const {
-      currentUser,
-      updateProfile
-    } = this.props;
-
-    updateProfile(currentUser.id, {isEditMode: toggleState});
+    this.setState({isEditMode: toggleState});
   }
 
   handleSearch() {
@@ -107,6 +103,7 @@ export class Profile extends Component {
       currentUser
     } = this.props;
     const isCurrentProfile = currentUser.id === parseInt(match.params.userId);
+    const {isEditMode} = this.state;
 
     return (
       <Page>
@@ -115,14 +112,14 @@ export class Profile extends Component {
             <img src={profile.photo} aria-label="profile picture"/>
           </div>
           <div className="profile__details-container">
-            {(isCurrentProfile && !profile.isEditMode) &&
+            {(isCurrentProfile && !isEditMode) &&
               <button
                 type="button"
                 className="profile__button-link"
                 onClick={this.toggleEdit.bind(this, true)}
               >Edit Page</button>
             }
-            {profile.isEditMode &&
+            {isEditMode &&
               <h2>Currently Editing Page...</h2>
             }
             <h1 className="profile__name">{profile.name}</h1>
@@ -170,7 +167,7 @@ export class Profile extends Component {
                   </div>
               ))}
 
-              {profile.isEditMode &&
+              {isEditMode &&
                 <div className="profile__research-edit">
                   <h2>Add Research</h2>
 
