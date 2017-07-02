@@ -35,7 +35,11 @@ export class Page extends Component {
     return (
       <div className="page">
         <div className="page__header">
-          <div className="page__logo">ProFile</div>
+          <a
+            href="/"
+            className="page__logo"
+            onClick={this.handleRoute.bind(this)}
+          >ProFile</a>
           <ul className="page__nav">
             {loggedIn &&
               <li className="page__nav-item">
