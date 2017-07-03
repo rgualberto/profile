@@ -1,0 +1,94 @@
+{
+   "batchcomplete":"",
+   "continue":{
+      "sroffset":10,
+      "continue":"-||"
+   },
+   "query":{
+      "searchinfo":{
+         "totalhits":130609
+      },
+      "search":[
+         {
+            "ns":0,
+            "title":"Engine",
+            "size":37402,
+            "wordcount":4691,
+            "snippet":"An <span class=\"searchmatch\">engine</span> or motor is a machine designed to convert one form of energy into mechanical energy. Heat <span class=\"searchmatch\">engines</span> burn a fuel to create heat, which is then used",
+            "timestamp":"2017-06-26T21:48:41Z"
+         },
+         {
+            "ns":0,
+            "title":"Unreal Engine",
+            "size":66209,
+            "wordcount":5510,
+            "snippet":"The Unreal <span class=\"searchmatch\">Engine</span> is a game <span class=\"searchmatch\">engine</span> developed by Epic Games, first showcased in the 1998 first-person shooter game Unreal. Although primarily developed",
+            "timestamp":"2017-07-02T08:21:04Z"
+         },
+         {
+            "ns":0,
+            "title":"Aircraft engine",
+            "size":36537,
+            "wordcount":4383,
+            "snippet":"An aircraft <span class=\"searchmatch\">engine</span> is the component of the propulsion system for an aircraft that generates mechanical power. Aircraft <span class=\"searchmatch\">engines</span> are almost always either",
+            "timestamp":"2017-06-28T19:51:41Z"
+         },
+         {
+            "ns":0,
+            "title":"Reciprocating engine",
+            "size":15800,
+            "wordcount":2006,
+            "snippet":"reciprocating <span class=\"searchmatch\">engine</span>, also often known as a piston <span class=\"searchmatch\">engine</span>, is typically a heat <span class=\"searchmatch\">engine</span> (although there are also pneumatic and hydraulic reciprocating <span class=\"searchmatch\">engines</span>) that",
+            "timestamp":"2017-04-14T18:23:51Z"
+         },
+         {
+            "ns":0,
+            "title":"Game engine",
+            "size":24404,
+            "wordcount":2890,
+            "snippet":"functionality typically provided by a game <span class=\"searchmatch\">engine</span> includes a rendering <span class=\"searchmatch\">engine</span> (“renderer”) for 2D or 3D graphics, a physics <span class=\"searchmatch\">engine</span> or collision detection (and collision",
+            "timestamp":"2017-05-05T15:58:51Z"
+         },
+         {
+            "ns":0,
+            "title":"Steam engine",
+            "size":79077,
+            "wordcount":9766,
+            "snippet":"A steam <span class=\"searchmatch\">engine</span> is a heat <span class=\"searchmatch\">engine</span> that performs mechanical work using steam as its working fluid. Steam <span class=\"searchmatch\">engines</span> are external combustion <span class=\"searchmatch\">engines</span>, where the",
+            "timestamp":"2017-06-30T23:15:37Z"
+         },
+         {
+            "ns":0,
+            "title":"Rotary engine",
+            "size":36894,
+            "wordcount":4931,
+            "snippet":"The rotary <span class=\"searchmatch\">engine</span> was an early type of internal combustion <span class=\"searchmatch\">engine</span>, usually designed with an odd number of cylinders per row in a radial configuration,",
+            "timestamp":"2017-06-14T21:32:09Z"
+         },
+         {
+            "ns":0,
+            "title":"Wankel engine",
+            "size":126953,
+            "wordcount":16321,
+            "snippet":"The Wankel <span class=\"searchmatch\">engine</span> is a type of internal combustion <span class=\"searchmatch\">engine</span> using an eccentric rotary design to convert pressure into rotating motion. In contrast to the",
+            "timestamp":"2017-07-01T21:26:09Z"
+         },
+         {
+            "ns":0,
+            "title":"Stirling engine",
+            "size":79402,
+            "wordcount":9523,
+            "snippet":"A Stirling <span class=\"searchmatch\">engine</span> is a heat <span class=\"searchmatch\">engine</span> that operates by cyclic compression and expansion of air or other gas (the working fluid) at different temperatures",
+            "timestamp":"2017-06-29T04:24:16Z"
+         },
+         {
+            "ns":0,
+            "title":"Radial engine",
+            "size":34596,
+            "wordcount":4496,
+            "snippet":"The radial <span class=\"searchmatch\">engine</span> is a reciprocating type internal combustion <span class=\"searchmatch\">engine</span> configuration in which the cylinders &quot;radiate&quot; outward from a central crankcase like",
+            "timestamp":"2017-05-07T14:14:35Z"
+         }
+      ]
+   }
+}
