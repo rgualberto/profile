@@ -35,6 +35,7 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-1": "6.24.1",
     "babel-register": "6.24.1",
+    "enzyme": "^2.9.1",
     "es6-promise": "4.1.0",
     "exports-loader": "0.6.4",
     "history": "4.6.1",
