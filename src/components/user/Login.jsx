@@ -44,6 +44,14 @@ export class Login extends Component {
     if (!_.isEmpty(validUser)) {
       this.props.setUser(validUser);
       window.localStorage.setItem('currentUserId', validUser.id);
+    } else if (this.props.invalidLogin) {
+      // TODO: replace with actual animation and get rid of this stink
+      const errorInput = this.refs.error;
+
+      errorInput.classList.add('login__error--flash');
+      setTimeout(() => {
+        errorInput.classList.remove('login__error--flash');
+      }, 500);
     } else {
       this.props.setInvalidLogin(true);
     }
@@ -58,15 +66,27 @@ export class Login extends Component {
           <fieldset>
             <legend>Login Info</legend>
             {invalidLogin &&
-              <div className="login__error">Username/Password combination invalid. Please adjust.</div>
+              <div ref="error" className="login__error error">Username/Password combination invalid. Please adjust.</div>
             }
             <div className="login__field">
               <label htmlFor="login-username">Username:</label>
-              <input ref="username" type="text" name="login-username" id="login-username" />
+              <input
+                ref="username"
+                type="text"
+                name="login-username"
+                id="login-username"
+                className="login__text-box text-box"
+              />
             </div>
             <div className="login__field">
               <label htmlFor="login-password">Password:</label>
-              <input ref="password" type="password" name="login-password" id="login-password" />
+              <input
+                ref="password"
+                type="password"
+                name="login-password"
+                id="login-password"
+                className="login__text-box text-box"
+              />
             </div>
 
             <button

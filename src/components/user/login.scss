@@ -1,1 +1,23 @@
-.login {}
+@import '../../globals/globals';
+
+.login {
+  padding-top: 10px;
+}
+
+.login__error {
+  display: inline-block;
+  padding: 10px 0;
+  transition: opacity 0.1s;
+}
+
+.login__error--flash {
+  background: $red;
+  color: $white;
+  border-radius: 5px;
+  margin-left: -5px;
+  padding: 10px 5px;
+}
+
+.login__text-box {
+  margin-left: 10px;
+}
