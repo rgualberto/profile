@@ -1,21 +1,9 @@
-# Outline
+# ProFile
 
-1. ProFile
-  - Use Facebook api to prefill fields
-  - add location - geolocate/localize with bing or google api
-  - Add sections/categories/etc... if time
-2. Research Entries/Interests (Wikipedia Articles)
-  - Use Wikimedia api
-  - Search wikipedia articles (returns page titles?)
-  - query page (action=parse to get raw markup)
-  - save page
-    - give option to save subcategory (table of contents id=toc class=toc) url (anchored link)
-    - give link to page to check against (can’t reliably parse page other than that)
-  - share links
-3. Nice to have
-  - Use twilio api
-    - contact list - sms at will
+Demo app for underlying implementation. Built using custom boilerplate: [rgualberto/redux-bp](https://github.com/rgualberto/redux-bp)
 
+### Premise
+ProFile would be used by professional researchers to connect and collaborate with one another. Research articles in the form of Wikipedia Entries can be searched for, added, and easily accessed in the profile page. This is in addition to any personal details a researcher might want to share (i.e. education, work location, etc...).
 
 ## Installation
 
@@ -32,6 +20,7 @@ $ yarn
 ```
 
 ## Usage
+Navigation requires a server config to correctly resolve routes. The dev server comes configured. Adjust your route configuration for your production server accordingly.
 
 Run local dev server (http://localhost:8080):
 
@@ -50,3 +39,23 @@ Run eslint:
 ```shell
 $ npm run lint:js
 ```
+
+### Credentials
+use either of the following logins to edit the appropriate profile:
+
+Sven Motorson
+  - **user**: doctor_doge
+  - **pass**: verywow123
+
+Alice Mendelson
+  - **user**: professor
+  - **pass**: iteachstuff2you
+
+### Notes
+- Once routes are configured on production server, use the production configuration (webpack.prod.config.babel.js) for the webpack bundler.
+
+## ToDo
+- Add ability to edit a few profile fields
+- add ability to pull image from github or facebook
+- add ability to remove research
+- make research search table responsive
